@@ -19,6 +19,7 @@ kotlinxCoroutinesCore = "1.10.1"
 koinCore = "4.1.0-Beta5"
 koinTest = "4.1.0-Beta5"
 koinAndroid = "4.1.0-Beta5"
+material3 = "1.1.0-beta01"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

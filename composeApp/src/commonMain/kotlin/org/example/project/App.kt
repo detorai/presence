@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.Navigator
 import org.example.project.di.appModule
 import org.example.project.ui.login.LoginScreen
+import org.example.project.ui.schedule.ScheduleScreen
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
@@ -27,6 +28,6 @@ fun App() {
         startKoin {
             modules(appModule)
         }
-        Navigator(LoginScreen())
+        Navigator(ScheduleScreen())
     }
 }

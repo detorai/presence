@@ -1,4 +1,4 @@
-package org.example.project.data.mod
+package org.example.project.data.model.login
 
 import kotlinx.serialization.Serializable
 

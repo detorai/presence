@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,15 +22,26 @@ import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.koin.koinScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import org.example.project.ui.common.CommonButton
 import org.example.project.ui.common.CommonCheckBoxRow
 import org.example.project.ui.common.CommonTextField
+import org.example.project.ui.schedule.ScheduleScreen
 
 class LoginScreen: Screen {
 
     @Composable
     override fun Content() {
+        val navigator  = LocalNavigator.currentOrThrow
         val viewModel: LoginViewModel = koinScreenModel()
+        val state = viewModel.state.collectAsState().value
+        LaunchedEffect(Unit){
+            if (state.success) {
+                navigator.push(ScheduleScreen())
+            }
+        }
         Login(viewModel)
     }
 

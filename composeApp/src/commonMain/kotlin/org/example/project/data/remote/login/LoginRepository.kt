@@ -2,7 +2,7 @@ package org.example.project.data.remote.login
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import org.example.project.data.model.LoginRequest
+import org.example.project.data.model.login.LoginRequest
 import org.example.project.data.model.ResponseState
 
 class LoginRepository(private val loginImpl: LoginImpl) {

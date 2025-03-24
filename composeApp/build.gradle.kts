@@ -47,6 +47,7 @@ kotlin {
             val voyagerVersion = "1.1.0-beta02"
             implementation(libs.koin.core)
             implementation(libs.koin.test)
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
             implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
             implementation("cafe.adriel.voyager:voyager-screenmodel:$voyagerVersion")
             implementation(dependencyNotation = "cafe.adriel.voyager:voyager-koin:$voyagerVersion")
@@ -54,7 +55,7 @@ kotlin {
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-
+            implementation ("androidx.compose.material3:material3:1.3.1")
             implementation(libs.kotlinx.coroutines.core)
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -104,7 +105,6 @@ android {
 }
 
 dependencies {
-
     debugImplementation(compose.uiTooling)
 }
 
