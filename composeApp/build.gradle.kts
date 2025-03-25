@@ -42,8 +42,12 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("io.ktor:ktor-client-android:$ktorVersion")
+            implementation ("androidx.datastore:datastore-preferences:1.1.3")
+
+
         }
         commonMain.dependencies {
+            implementation("androidx.datastore:datastore-preferences-core:1.1.3")
             val voyagerVersion = "1.1.0-beta02"
             implementation(libs.koin.core)
             implementation(libs.koin.test)
@@ -55,7 +59,6 @@ kotlin {
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-            implementation ("androidx.compose.material3:material3:1.3.1")
             implementation(libs.kotlinx.coroutines.core)
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -105,6 +108,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.animation.core.android)
     debugImplementation(compose.uiTooling)
 }
 

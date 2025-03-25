@@ -20,6 +20,7 @@ koinCore = "4.1.0-Beta5"
 koinTest = "4.1.0-Beta5"
 koinAndroid = "4.1.0-Beta5"
 material3 = "1.1.0-beta01"
+animationCoreAndroid = "1.7.8"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -39,6 +40,7 @@ kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koinCore" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koinTest" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinAndroid" }
+androidx-animation-core-android = { group = "androidx.compose.animation", name = "animation-core-android", version.ref = "animationCoreAndroid" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

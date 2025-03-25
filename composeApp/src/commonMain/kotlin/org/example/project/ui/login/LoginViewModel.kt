@@ -5,14 +5,15 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.example.project.data.local.TokenStorageInterface
 import org.example.project.data.model.login.LoginRequest
 import org.example.project.data.model.ResponseState
 import org.example.project.data.remote.login.LoginImpl
 import org.example.project.data.remote.login.LoginRepository
 
-class LoginViewModel(private val loginImpl: LoginImpl): ScreenModel {
+class LoginViewModel(private val loginImpl: LoginImpl, private val tokenStorageInterface: TokenStorageInterface): ScreenModel {
     val state = MutableStateFlow(LoginScreenState())
-    private val repository = LoginRepository(loginImpl)
+    private val repository = LoginRepository(loginImpl, tokenStorageInterface)
 
     fun resetError(){
         state.update{
