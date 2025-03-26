@@ -6,6 +6,6 @@ import org.example.project.data.model.login.LoginResponse
 import org.example.project.data.model.login.LoginRequest
 
 interface LoginInterface {
-    @POST("auth/login")
+    @POST("api/v1/auth/login")
     suspend fun login(@Body loginRequest: LoginRequest): LoginResponse
 }

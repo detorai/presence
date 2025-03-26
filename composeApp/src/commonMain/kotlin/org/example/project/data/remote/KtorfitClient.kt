@@ -26,7 +26,7 @@ object KtorfitClient {
         }
     }
     val client = Ktorfit.Builder()
-        .baseUrl("http://192.168.4.25:8080/")
+        .baseUrl("http://192.168.3.217:8080/")
         .httpClient(ktorClient)
         .build()
     val loginInstance: LoginInterface = client.create()

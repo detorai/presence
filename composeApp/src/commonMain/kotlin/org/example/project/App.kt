@@ -28,9 +28,6 @@ import presence.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
-        startKoin {
-            modules(appModule)
-        }
         Navigator(LoginScreen())
     }
 }

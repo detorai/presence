@@ -8,9 +8,9 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import org.example.project.data.local.TokenStorageInterface
+import org.example.project.data.local.TokenStorage
 
-class AndroidTokenStorage(private val context: Context): TokenStorageInterface {
+class AndroidTokenStorage(private val context: Context): TokenStorage {
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "auth_store")
     private val tokenKey = stringPreferencesKey("auth_token")
 
@@ -33,6 +33,3 @@ class AndroidTokenStorage(private val context: Context): TokenStorageInterface {
     }
 }
 
-object TokenStorageFactory {
-    fun create(context: Context): TokenStorageInterface = AndroidTokenStorage(context)
-}
