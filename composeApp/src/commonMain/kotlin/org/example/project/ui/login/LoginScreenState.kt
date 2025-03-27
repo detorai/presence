@@ -6,5 +6,5 @@ data class LoginScreenState(
     var error: String? = null,
     var success: Boolean = false,
     var check: Boolean = false,
-
+    var groupId: Int = 0
 )

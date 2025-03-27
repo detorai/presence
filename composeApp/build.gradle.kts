@@ -10,6 +10,7 @@ plugins {
     kotlin("plugin.serialization") version "2.0.0"
     id("com.google.devtools.ksp") version "2.1.10-1.0.31"
     id("de.jensklingenberg.ktorfit") version "2.4.0"
+    id("app.cash.sqldelight") version "2.0.1"
 }
 
 kotlin {
@@ -34,21 +35,25 @@ kotlin {
     jvm("desktop")
     
     sourceSets {
+
         val desktopMain by getting
         val ktorVersion = "3.1.1"
         val ktorfitVersion = "2.4.0"
+        val sqldelightVersion = "2.0.1"
+        val voyagerVersion = "1.1.0-beta02"
+
         androidMain.dependencies {
             implementation(libs.koin.android)
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("io.ktor:ktor-client-android:$ktorVersion")
             implementation ("androidx.datastore:datastore-preferences:1.1.3")
-
-
+            implementation("app.cash.sqldelight:android-driver:$sqldelightVersion")
         }
+
         commonMain.dependencies {
+            implementation("app.cash.sqldelight:coroutines-extensions:$sqldelightVersion")
             implementation("androidx.datastore:datastore-preferences-core:1.1.3")
-            val voyagerVersion = "1.1.0-beta02"
             implementation(libs.koin.core)
             implementation(libs.koin.test)
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
@@ -68,10 +73,11 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
-
         }
+
         iosMain.dependencies {
             implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            implementation("app.cash.sqldelight:native-driver:$sqldelightVersion")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -120,6 +126,14 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.example.project"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+sqldelight {
+    databases {
+        create("PresenceDatabase") {
+            packageName.set("org.example.project.cache")
         }
     }
 }

@@ -18,16 +18,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import org.example.project.ui.common.CommonButton
-import org.example.project.ui.common.CommonCheckBoxRow
-import org.example.project.ui.common.CommonTextField
+import org.example.project.ui.common.PresenceButton
+import org.example.project.ui.common.CheckBoxRow
+import org.example.project.ui.common.PresenceTextField
 import org.example.project.ui.schedule.ScheduleScreen
 
 class LoginScreen: Screen {
@@ -37,10 +34,10 @@ class LoginScreen: Screen {
         val navigator  = LocalNavigator.currentOrThrow
         val viewModel: LoginViewModel = koinScreenModel()
         val state = viewModel.state.collectAsState().value
-        LaunchedEffect(Unit){
-            if (state.success) {
-                navigator.push(ScheduleScreen())
-            }
+        LaunchedEffect(state.success){
+            if (state.groupId != 0)
+
+                navigator.push(ScheduleScreen(state.groupId))
         }
         Login(viewModel)
     }
@@ -78,7 +75,7 @@ class LoginScreen: Screen {
                     color = Color(0xFF2c2c2c),
                     textAlign = TextAlign.Center
                 )
-                CommonTextField(
+                PresenceTextField(
                     value = state.login,
                     onValue = viewModel::onLogin,
                     placeholder = "xyz",
@@ -86,20 +83,20 @@ class LoginScreen: Screen {
                     top = 145
 
                 )
-                CommonTextField(
+                PresenceTextField(
                     value = state.password,
                     onValue = viewModel::onPassword,
                     placeholder = "********",
                     text = "Пароль",
                     top = 18
                 )
-                CommonCheckBoxRow(
+                CheckBoxRow(
                     check = state.check,
                     onCheck = { viewModel.onCheck() },
                     top = 24
                 )
             }
-            CommonButton(
+            PresenceButton(
                 text = "Войти",
                 onClick = {
                     viewModel.login(state.login, state.password)

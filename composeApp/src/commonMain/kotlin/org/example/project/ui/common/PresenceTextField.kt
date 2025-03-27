@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CommonTextField(
+fun PresenceTextField(
     onValue: (String) -> Unit,
     value: String,
     placeholder: String,

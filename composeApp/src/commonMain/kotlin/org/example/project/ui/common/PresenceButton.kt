@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CommonButton(
+fun PresenceButton(
     text: String,
     onClick: () -> Unit,
     bottom: Int

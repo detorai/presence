@@ -20,7 +20,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 
 @Composable
-fun CommonBottomBar(
+fun PresenceBottomBar(
+    currentScreen: BottomBarScreen,
     onPerson: () -> Unit,
     onSchedule: () -> Unit,
     onSettings: () -> Unit,
@@ -37,24 +38,24 @@ fun CommonBottomBar(
                     when (index) {
                         0 -> {
                             Icon(
-                                imageVector = if (selectedItem == index) Icons.Default.Person else Icons.Outlined.Person,
+                                imageVector = if (currentScreen == BottomBarScreen.PERSON) Icons.Default.Person else Icons.Outlined.Person,
                                 contentDescription = "",
-                                tint = if (selectedItem == 0) Color.White else Color(0xFFd9d9d9)
+                                tint = if (currentScreen == BottomBarScreen.PERSON) Color.White else Color(0xFFd9d9d9)
                             )
                         }
                         1 -> {
                             Icon(
-                                imageVector = if (selectedItem == index) Icons.Default.DateRange else Icons.Outlined.DateRange,
+                                imageVector = if (currentScreen == BottomBarScreen.SCHEDULE) Icons.Default.DateRange else Icons.Outlined.DateRange,
                                 contentDescription = "",
-                                tint = if (selectedItem == 1) Color.White else Color(0xFFd9d9d9)
+                                tint = if (currentScreen == BottomBarScreen.SCHEDULE) Color.White else Color(0xFFd9d9d9)
                             )
 
                         }
                         2 -> {
                             Icon(
-                                imageVector = if (selectedItem == index) Icons.Default.Settings else Icons.Outlined.Settings,
+                                imageVector = if (currentScreen == BottomBarScreen.SETTINGS) Icons.Default.Settings else Icons.Outlined.Settings,
                                 contentDescription = "",
-                                tint = if (selectedItem == 2) Color.White else Color(0xFFd9d9d9)
+                                tint = if (currentScreen == BottomBarScreen.SETTINGS) Color.White else Color(0xFFd9d9d9)
 
                             )
                         }
@@ -101,4 +102,8 @@ fun CommonBottomBar(
             )
         }
     }
+}
+
+enum class BottomBarScreen {
+    SCHEDULE, PERSON, SETTINGS
 }

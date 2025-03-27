@@ -10,6 +10,7 @@ import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.example.project.data.remote.login.LoginInterface
+import org.example.project.data.remote.schedule.ScheduleInterface
 
 object KtorfitClient {
     val ktorClient = HttpClient() {
@@ -30,4 +31,5 @@ object KtorfitClient {
         .httpClient(ktorClient)
         .build()
     val loginInstance: LoginInterface = client.create()
+    val scheduleInstance: ScheduleInterface = client.create()
 }
